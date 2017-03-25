@@ -1,4 +1,4 @@
-package com.conan.myapp;
+package com.conan.myapp.activity;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -6,6 +6,9 @@ import android.os.Message;
 import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.conan.myapp.BaseActivity;
+import com.conan.myapp.R;
 
 import java.io.IOException;
 

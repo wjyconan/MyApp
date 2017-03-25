@@ -1,4 +1,4 @@
-package com.conan.myapp;
+package com.conan.myapp.service;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -11,6 +11,11 @@ import android.os.Environment;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
 import android.widget.Toast;
+
+import com.conan.myapp.DownloadListener;
+import com.conan.myapp.DownloadTask;
+import com.conan.myapp.R;
+import com.conan.myapp.activity.DownloadDemoActivity;
 
 import java.io.File;
 

@@ -1,4 +1,4 @@
-package com.conan.myapp;
+package com.conan.myapp.service;
 
 import android.app.IntentService;
 import android.content.Intent;

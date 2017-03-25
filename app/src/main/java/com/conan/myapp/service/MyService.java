@@ -1,4 +1,4 @@
-package com.conan.myapp;
+package com.conan.myapp.service;
 
 import android.app.Notification;
 import android.app.PendingIntent;
@@ -9,6 +9,9 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+
+import com.conan.myapp.R;
+import com.conan.myapp.activity.ServiceActivity;
 
 /**
  * Author        conan

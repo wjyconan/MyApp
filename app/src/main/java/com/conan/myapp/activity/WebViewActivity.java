@@ -1,9 +1,12 @@
-package com.conan.myapp;
+package com.conan.myapp.activity;
 
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import com.conan.myapp.BaseActivity;
+import com.conan.myapp.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

@@ -1,4 +1,4 @@
-package com.conan.myapp;
+package com.conan.myapp.activity;
 
 import android.Manifest;
 import android.annotation.TargetApi;
@@ -6,8 +6,6 @@ import android.content.ContentUris;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -24,8 +22,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.conan.myapp.BaseActivity;
+import com.conan.myapp.R;
+
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import butterknife.BindView;
@@ -122,13 +123,10 @@ public class ImageActivity extends BaseActivity implements View.OnClickListener 
         switch (requestCode) {
             case TAKE_PHOTO:
                 if (resultCode == RESULT_OK) {
-                    try {
                         Log.d(TAG, "onActivityResult: imageUri---->" + imageUri);
-                        Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));
-                        imageView.setImageBitmap(bitmap);
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                    }
+                        Glide.with(this).load(imageUri).into(imageView);
+//                        Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));
+//                        imageView.setImageBitmap(bitmap);
                 }
                 break;
             case CHOOSE_PHOTO:
@@ -189,8 +187,9 @@ public class ImageActivity extends BaseActivity implements View.OnClickListener 
 
     private void displayImage(String imageUrl) {
         if (imageUrl != null) {
-            Bitmap bitmap = BitmapFactory.decodeFile(imageUrl);
-            imageView.setImageBitmap(bitmap);
+            Glide.with(this).load(imageUrl).into(imageView);
+//            Bitmap bitmap = BitmapFactory.decodeFile(imageUrl);
+//            imageView.setImageBitmap(bitmap);
         } else {
             Toast.makeText(this, "fail to get image!", Toast.LENGTH_SHORT).show();
         }

@@ -1,9 +1,12 @@
-package com.conan.myapp;
+package com.conan.myapp.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+
+import com.conan.myapp.BaseActivity;
+import com.conan.myapp.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -47,7 +50,7 @@ public class MainActivity extends BaseActivity {
                 startActivity(intent);
                 break;
             case R.id.btn_ui:
-                intent = new Intent(this, Main2Activity.class);
+                intent = new Intent(this, UIActivity.class);
                 startActivity(intent);
                 break;
         }

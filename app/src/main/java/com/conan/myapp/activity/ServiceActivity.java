@@ -1,4 +1,4 @@
-package com.conan.myapp;
+package com.conan.myapp.activity;
 
 import android.content.ComponentName;
 import android.content.Intent;
@@ -8,6 +8,11 @@ import android.os.IBinder;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+
+import com.conan.myapp.BaseActivity;
+import com.conan.myapp.service.MyIntentService;
+import com.conan.myapp.service.MyService;
+import com.conan.myapp.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
