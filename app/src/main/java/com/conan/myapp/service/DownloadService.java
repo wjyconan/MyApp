@@ -71,7 +71,7 @@ public class DownloadService extends Service implements DownloadListener {
         Toast.makeText(DownloadService.this, "Download Cancelled!", Toast.LENGTH_SHORT).show();
     }
 
-    class DownloadBinder extends Binder {
+    public class DownloadBinder extends Binder {
 
         public void startDownload(String url) {
             if (downloadTask == null) {

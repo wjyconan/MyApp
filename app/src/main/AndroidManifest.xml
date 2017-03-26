@@ -64,7 +64,8 @@
             android:name=".activity.Main2Activity"
             android:label="@string/title_activity_main2"
             android:theme="@style/AppTheme" />
-        <activity android:name=".activity.CollapsingActivity"></activity>
+        <activity android:name=".activity.CollapsingActivity"
+            android:theme="@style/CollapsingActivityTheme"/>
     </application>
 
 </manifest>

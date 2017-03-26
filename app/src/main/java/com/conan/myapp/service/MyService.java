@@ -28,12 +28,12 @@ public class MyService extends Service {
     public MyService() {
     }
 
-    class DownloadBinder extends Binder{
-        void startDownload(){
+    public class DownloadBinder extends Binder{
+        public void startDownload(){
             Log.d(TAG, "startDownload: ");
         }
 
-        int getProgress(){
+        public int getProgress(){
             Log.d(TAG, "getProgress: ");
             return 0;
         }

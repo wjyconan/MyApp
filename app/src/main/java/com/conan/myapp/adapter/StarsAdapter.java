@@ -1,6 +1,7 @@
 package com.conan.myapp.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.conan.myapp.R;
+import com.conan.myapp.activity.CollapsingActivity;
 import com.conan.myapp.bean.Stars;
 
 import java.util.List;
@@ -40,7 +42,19 @@ public class StarsAdapter extends RecyclerView.Adapter<StarsAdapter.ViewHolder> 
             mContext = parent.getContext();
         }
         View view = LayoutInflater.from(mContext).inflate(R.layout.item_resycler_stars, parent, false);
-        return new ViewHolder(view);
+        final ViewHolder viewHolder = new ViewHolder(view);
+        viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position = viewHolder.getAdapterPosition();
+                Stars star = list.get(position);
+                Intent intent = new Intent(mContext, CollapsingActivity.class);
+                intent.putExtra(CollapsingActivity.STAR_NAME,star.getName());
+                intent.putExtra(CollapsingActivity.STAR_IMG_URL,star.getImageUrl());
+                mContext.startActivity(intent);
+            }
+        });
+        return viewHolder;
     }
 
     @Override
