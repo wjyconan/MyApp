@@ -30,11 +30,10 @@ import okhttp3.Response;
  */
 public class OkHttpActivity extends BaseActivity {
 
+    private static final int UPDATE_TEXT = 1;
+
     @BindView(R.id.tv)
     TextView tv;
-
-    private static final String TAG = "OkHttpActivity";
-    private static final int UPDATE_TEXT = 1;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 

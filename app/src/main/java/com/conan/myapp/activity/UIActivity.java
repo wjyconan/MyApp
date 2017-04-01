@@ -71,29 +71,18 @@ public class UIActivity extends AppCompatActivity {
         }
         initData();
         swipeRefresh.setColorSchemeResources(R.color.colorPrimary);
-        swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            Thread.sleep(2000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                initData();
-                                adapter.notifyDataSetChanged();
-                                swipeRefresh.setRefreshing(false);
-                            }
-                        });
-                    }
-                }).start();
+        swipeRefresh.setOnRefreshListener(() -> new Thread(() -> {
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
-        });
+            UIActivity.this.runOnUiThread(() -> {
+                initData();
+                adapter.notifyDataSetChanged();
+                swipeRefresh.setRefreshing(false);
+            });
+        }).start());
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         adapter = new StarsAdapter(list);
         recyclerView.setAdapter(adapter);
@@ -134,14 +123,8 @@ public class UIActivity extends AppCompatActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.floatingActionButton:
-//                Toast.makeText(this,"Fab Clicked",Toast.LENGTH_SHORT).show();
                 Snackbar.make(view, "Data Delete", Snackbar.LENGTH_SHORT)
-                        .setAction("Undo", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Toast.makeText(UIActivity.this, "Data Restore", Toast.LENGTH_SHORT).show();
-                            }
-                        })
+                        .setAction("Undo", v -> Toast.makeText(UIActivity.this, "Data Restore", Toast.LENGTH_SHORT).show())
                         .show();
                 break;
         }
