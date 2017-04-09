@@ -25,7 +25,7 @@ public class MainActivity extends BaseActivity {
         setSupportActionBar(toolbar);
     }
 
-    @OnClick({R.id.btn_image, R.id.btn_web, R.id.btn_okhttp, R.id.btn_service, R.id.btn_download_demo,R.id.btn_ui})
+    @OnClick({R.id.btn_image, R.id.btn_web, R.id.btn_okhttp, R.id.btn_service, R.id.btn_download_demo,R.id.btn_ui,R.id.btn_canvas})
     public void onClick(View view) {
         Intent intent;
         switch (view.getId()) {
@@ -51,6 +51,10 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.btn_ui:
                 intent = new Intent(this, UIActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btn_canvas:
+                intent = new Intent(this, CanvasActivity.class);
                 startActivity(intent);
                 break;
         }

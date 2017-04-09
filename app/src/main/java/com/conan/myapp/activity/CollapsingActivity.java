@@ -38,6 +38,7 @@ public class CollapsingActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_collapsing);
         ButterKnife.bind(this);
+
         setSupportActionBar(toolbar);
 
         initView();
