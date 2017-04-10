@@ -1,54 +1,54 @@
-package com.conan.myapp.activity;
+package com.conan.myapp.view;
 
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Rect;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
-import android.view.View;
 
 /**
- * Created by wjy on 2017/4/9.
+ * Author        JY
+ * PublishDate   2017-04-10
+ * Description   功能描述
+ * Version       1.0
+ * Updated       JY
  */
+public class MyTextView extends AppCompatTextView {
 
-public class MyView extends View {
-    private Paint mPaint;
-    private Rect mRect;
-    private int mCount;
+    private Paint mPaint1;
+    private Paint mPaint2;
 
-    public MyView(Context context) {
+    public MyTextView(Context context) {
         super(context);
     }
 
-    public MyView(Context context, @Nullable AttributeSet attrs) {
+    public MyTextView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
 
-        mPaint=new Paint(Paint.ANTI_ALIAS_FLAG);//创建画笔绘制抗锯齿
-        mRect=new Rect();
+        mPaint1 = new Paint();
+        mPaint2 = new Paint();
+
+        mPaint1.setColor(getResources().getColor(android.R.color.holo_blue_light));
+        mPaint1.setStyle(Paint.Style.FILL);
+
+        mPaint2.setColor(Color.YELLOW);
+        mPaint2.setStyle(Paint.Style.FILL);
     }
 
-    public MyView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public MyTextView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
+        canvas.drawRect(0, 0, getMeasuredWidth(), getMeasuredHeight(), mPaint1);
+        canvas.drawRect(10, 10, getMeasuredWidth() - 10, getMeasuredHeight() - 10, mPaint2);
+        canvas.save();
+        canvas.translate(10, 0);
         super.onDraw(canvas);
-        //将画笔设置成蓝色 绘制CountView的区域
-        mPaint.setColor(Color.BLUE);
-        canvas.drawRect(0, 0, getWidth(), getHeight(), mPaint);
-        //设置更改画笔的颜色 绘制CountView区域上的计数的文字
-        mPaint.setColor(Color.RED);
-        mPaint.setTextSize(30);
-        String text = String.valueOf(mCount);//将计数的整数转换成字符串
-        // 通过getTextBounds方法得到绘制文字的宽度和高度
-        mPaint.getTextBounds(text, 0, text.length(), mRect);
-        //获取区域中文字的宽度和高度
-        float textWidth = mRect.width();
-        float textHeight = mRect.height();
-        canvas.drawText(text, getWidth() / 2 - textWidth / 2, getHeight() / 2 + textHeight / 2, mPaint);
+        canvas.restore();
     }
 
     @Override

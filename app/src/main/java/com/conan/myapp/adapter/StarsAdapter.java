@@ -43,13 +43,16 @@ public class StarsAdapter extends RecyclerView.Adapter<StarsAdapter.ViewHolder> 
         }
         View view = LayoutInflater.from(mContext).inflate(R.layout.item_resycler_stars, parent, false);
         final ViewHolder viewHolder = new ViewHolder(view);
-        viewHolder.cardView.setOnClickListener(v -> {
-            int position = viewHolder.getAdapterPosition();
-            Stars star = list.get(position);
-            Intent intent = new Intent(mContext, CollapsingActivity.class);
-            intent.putExtra(CollapsingActivity.STAR_NAME,star.getName());
-            intent.putExtra(CollapsingActivity.STAR_IMG_URL,star.getImageUrl());
-            mContext.startActivity(intent);
+        viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position = viewHolder.getAdapterPosition();
+                Stars star = list.get(position);
+                Intent intent = new Intent(mContext, CollapsingActivity.class);
+                intent.putExtra(CollapsingActivity.STAR_NAME, star.getName());
+                intent.putExtra(CollapsingActivity.STAR_IMG_URL, star.getImageUrl());
+                mContext.startActivity(intent);
+            }
         });
         return viewHolder;
     }
